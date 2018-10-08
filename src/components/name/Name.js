@@ -48,11 +48,3 @@ var styles = StyleSheet.create({
         textAlign: 'center',
     }
 })
-
-
-{/* <Icon name="Tick" fill="#0f0" viewBox="0 0 200 200" />
-                <Icon name="SortArrows" height="20" width="20" />
-                <Icon name="Triangle" height="20" width="20" />
-                <Icon name="TirangleEmpty" height="20" width="20" />
-                <Icon name="Square" height="20" width="20" />
-                <Icon name="SquareEmpty" height="20" width="20" /> */}

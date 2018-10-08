@@ -19,12 +19,10 @@ class Game extends Component {
                 title='+'
                 onPress={() => console.log('pressed')}
             />
-            
         ),
     });
 
     render() {
-
         let rows = []
 
         for (let i = 0; i < 20; i++) {
