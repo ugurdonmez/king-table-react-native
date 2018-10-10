@@ -21,16 +21,17 @@
     "redux": "^4.0.0"
   },
   "jest": {
+    "setupFiles": ["./src/helpers/enzyme_setup"],
     "preset": "react-native",
     "snapshotSerializers": [
-      "./node_modules/jest-serializer-enzyme"
+      "enzyme-to-json/serializer"
     ]
   },
   "devDependencies": {
     "babel-jest": "^23.6.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
-    "enzyme-to-json": "3.0.0-beta6",
+    "enzyme-to-json": "^3.3.4",
     "jest": "^23.6.0",
     "jest-enzyme": "^7.0.0",
     "jest-serializer-enzyme": "^1.0.0",

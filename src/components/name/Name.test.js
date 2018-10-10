@@ -1,15 +1,14 @@
-import 'react-native';
 import React from 'react';
+import 'react-native';
 import Name from './Name';
-
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import 'jest-enzyme'
-import React from 'react'
-Enzyme.configure({adapter: new Adapter()}) // ????
-
+import { shallow } from 'enzyme'
 
 import renderer from 'react-test-renderer'
+
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 it('renders correctly', () => {
     const tree = renderer.create(
@@ -29,8 +28,5 @@ it('check propbs', () => {
             reward="1"
         />
     )
-
     expect(wrapper).toMatchSnapshot();
-    
-
 })

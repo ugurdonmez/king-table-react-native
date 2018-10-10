@@ -1,5 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`check propbs 1`] = `
+<Component
+  style={
+    Object {
+      "borderColor": "#d6d7da",
+      "borderRadius": 4,
+      "borderWidth": 0.5,
+      "width": "20%",
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    ugur
+  </Text>
+  <Component
+    style={
+      Object {
+        "borderStyle": "solid",
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Icon
+      height="15"
+      name="TriangleEmpty"
+      style={
+        Object {
+          "margin": 3,
+        }
+      }
+      width="15"
+    />
+    <Icon
+      height="15"
+      name="TriangleEmpty"
+      style={
+        Object {
+          "margin": 3,
+        }
+      }
+      width="15"
+    />
+  </Component>
+  <Component
+    style={
+      Object {
+        "borderStyle": "solid",
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Icon
+      height="15"
+      name="CircleEmpty"
+      style={
+        Object {
+          "margin": 3,
+        }
+      }
+      width="15"
+    />
+    <Icon
+      height="15"
+      name="CircleEmpty"
+      style={
+        Object {
+          "margin": 3,
+        }
+      }
+      width="15"
+    />
+    <Icon
+      height="15"
+      name="CircleEmpty"
+      style={
+        Object {
+          "margin": 3,
+        }
+      }
+      width="15"
+    />
+  </Component>
+</Component>
+`;
+
 exports[`renders correctly 1`] = `
 <View
   style={

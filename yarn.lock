@@ -2179,12 +2179,6 @@ enzyme-matchers@^7.0.0:
     circular-json-es6 "^2.0.1"
     deep-equal-ident "^1.1.1"
 
-enzyme-to-json@3.0.0-beta6:
-  version "3.0.0-beta6"
-  resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.0.0-beta6.tgz#db537fbd9d7d06b8f65124d115c38694f798f055"
-  dependencies:
-    lodash "^4.17.4"
-
 enzyme-to-json@^1.4.4:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-1.6.0.tgz#9d9bba706e8b500c673b7a4fa9ff7ce57b8b9254"
@@ -2197,7 +2191,7 @@ enzyme-to-json@^1.4.4:
     object-values "^1.0.0"
     object.entries "^1.0.4"
 
-enzyme-to-json@^3.3.0:
+enzyme-to-json@^3.3.0, enzyme-to-json@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.3.4.tgz#67c6040e931182f183418af2eb9f4323258aa77f"
   dependencies:
