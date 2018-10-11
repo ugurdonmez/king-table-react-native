@@ -1,15 +1,20 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native'
+import PropTypes from 'prop-types';
+import { Text, StyleSheet } from 'react-native'
 
-const handName = () => {
+const HandName = (props) => {
     return (
         <Text style={styles.container}>
-            El Almaz
+            {props.name}
         </Text>
     );
 }
 
-export default handName;
+HandName.propTypes = {
+    name: PropTypes.string,
+}
+
+export default HandName;
 
 var styles = StyleSheet.create({
     container: {
