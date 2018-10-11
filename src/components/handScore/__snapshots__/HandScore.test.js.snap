@@ -15,6 +15,6 @@ exports[`<HandScore /> match snapshot 1`] = `
     }
   }
 >
-  100
+  10
 </Text>
 `;

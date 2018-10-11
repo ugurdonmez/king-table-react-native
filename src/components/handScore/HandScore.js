@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native'
 
-const handScore = () => {
+const handScore = (props) => {
     return (
         <Text style={styles.container}>
-            100
+            {props.score}
         </Text>
     );
 };

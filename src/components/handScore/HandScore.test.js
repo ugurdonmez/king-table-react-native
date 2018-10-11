@@ -6,7 +6,7 @@ import renderer from 'react-test-renderer'
 
 describe('<HandScore />', () => {
     it('renders without crashing', () => {
-        shallow(<HandScore />)
+        shallow(<HandScore score="10" />)
     })
 
     it('match snapshot', () => {
@@ -22,7 +22,7 @@ describe('<HandScore />', () => {
     it('text should be equal to prop name', () => {
         const wrapper = renderer.create(
             <HandScore 
-                name="10"
+                score="10"
             />
         ).toJSON();
 
