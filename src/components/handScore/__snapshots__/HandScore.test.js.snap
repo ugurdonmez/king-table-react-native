@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HandScore /> match snapshot 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Object {
+      "borderColor": "#d6d7da",
+      "borderRadius": 4,
+      "borderWidth": 0.5,
+      "textAlign": "center",
+      "width": "20%",
+    }
+  }
+>
+  100
+</Text>
+`;
