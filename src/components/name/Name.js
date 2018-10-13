@@ -3,9 +3,6 @@ import { View, Text, StyleSheet } from 'react-native'
 import Icon from '../icon/Icon'
 
 class Name extends Component {
-
-    pictureSource = require('../../../images/svg/001-triangle.svg')
-
     render() {
         return (
 

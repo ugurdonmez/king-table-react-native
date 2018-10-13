@@ -27,10 +27,38 @@ afterEach(() => {
 
 describe('<Icon />', () => {
     it('renders without crashing', () => {
-        // const wrapper = shallow(<Icon />)
+        shallow(<Icon name="Triangle"/>)
+    })
 
-        // expect(() => shallow(<Icon />)).toThrow();
+    it('Triangle match snapshot', () => {
+        const tree = renderer.create(
+            <Icon name="Triangle" />
+        ).toJSON();
 
-        shallow(<Icon />)
+        expect(tree).toMatchSnapshot();
+    })
+
+    it('TriangleEmpty match snapshot', () => {
+        const tree = renderer.create(
+            <Icon name="TriangleEmpty" />
+        ).toJSON();
+
+        expect(tree).toMatchSnapshot();
+    })
+
+    it('Circle match snapshot', () => {
+        const tree = renderer.create(
+            <Icon name="Circle" />
+        ).toJSON();
+
+        expect(tree).toMatchSnapshot();
+    })
+
+    it('CircleEmpty match snapshot', () => {
+        const tree = renderer.create(
+            <Icon name="CircleEmpty" />
+        ).toJSON();
+
+        expect(tree).toMatchSnapshot();
     })
 })
