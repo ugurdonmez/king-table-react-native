@@ -14,21 +14,41 @@ class Name extends Component {
     render() {
         let rewards = []
 
-        let index = 0;
-        for (; index < this.props.reward; i++) {
-            rewards.push(<Icon style={styles.icon} name="Triangle" height="15" width="15" />)
+        let i = 0;
+        for (; i < this.props.reward; i++) {
+            rewards.push(<Icon
+                key={i} 
+                style={styles.icon} 
+                name="Triangle" 
+                height="15" 
+                width="15" />)
         }
-        for (; index < 1; i++) {
-            rewards.push(<Icon style={styles.icon} name="TriangleEmpty" height="15" width="15" />)
+        for (; i < 2; i++) {
+            rewards.push(<Icon 
+                key={i}
+                style={styles.icon} 
+                name="TriangleEmpty" 
+                height="15" 
+                width="15" />)
         }
 
         let punishes = []
-        index = 0;
-        for (; index < this.props.reward; i++) {
-            punishes.push(<Icon style={styles.icon} name="Circle" height="15" width="15" />)
+        i = 0;
+        for (; i < this.props.punish; i++) {
+            punishes.push(<Icon 
+                key={i}
+                style={styles.icon} 
+                name="Circle" 
+                height="15" 
+                width="15" />)
         }
-        for (; index < 1; i++) {
-            punishes.push(<Icon style={styles.icon} name="CircleEmpty" height="15" width="15" />)
+        for (; i < 3; i++) {
+            punishes.push(<Icon 
+                key={i}
+                style={styles.icon} 
+                name="CircleEmpty" 
+                height="15" 
+                width="15" />)
         }
 
         return (

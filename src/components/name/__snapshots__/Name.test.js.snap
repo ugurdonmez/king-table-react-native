@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Name /> tests check propbs 1`] = `
+exports[`<Name /> tests snapshot test 1`] = `
 <Component
   style={
     Object {
@@ -21,7 +21,7 @@ exports[`<Name /> tests check propbs 1`] = `
       }
     }
   >
-    ugur
+    test
   </Text>
   <Component
     style={
@@ -34,7 +34,8 @@ exports[`<Name /> tests check propbs 1`] = `
   >
     <Icon
       height="15"
-      name="TriangleEmpty"
+      key="0"
+      name="Triangle"
       style={
         Object {
           "margin": 3,
@@ -44,6 +45,7 @@ exports[`<Name /> tests check propbs 1`] = `
     />
     <Icon
       height="15"
+      key="1"
       name="TriangleEmpty"
       style={
         Object {
@@ -64,6 +66,18 @@ exports[`<Name /> tests check propbs 1`] = `
   >
     <Icon
       height="15"
+      key="0"
+      name="Circle"
+      style={
+        Object {
+          "margin": 3,
+        }
+      }
+      width="15"
+    />
+    <Icon
+      height="15"
+      key="1"
       name="CircleEmpty"
       style={
         Object {
@@ -74,16 +88,7 @@ exports[`<Name /> tests check propbs 1`] = `
     />
     <Icon
       height="15"
-      name="CircleEmpty"
-      style={
-        Object {
-          "margin": 3,
-        }
-      }
-      width="15"
-    />
-    <Icon
-      height="15"
+      key="2"
       name="CircleEmpty"
       style={
         Object {
