@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Icon /> test heigh and width 1`] = `
+<RNSVGSvgView
+  align="xMidYMid"
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+      },
+      undefined,
+      false,
+      Object {
+        "flex": 0,
+        "height": 15,
+        "width": 15,
+      },
+    ]
+  }
+  vbHeight={60.001}
+  vbWidth={60.001}
+>
+  <RNSVGPath
+    d="M59.895,58.531l-29-58c-0.34-0.678-1.449-0.678-1.789,0l-29,58c-0.155,0.31-0.139,0.678,0.044,0.973 C0.332,59.798,0.654,59.978,1,59.978h58c0.347,0,0.668-0.18,0.851-0.474C60.033,59.209,60.05,58.841,59.895,58.531z M2.618,57.978 L30,3.214l27.382,54.764H2.618z"
+    fill={
+      Array [
+        0,
+        0,
+        0,
+        0,
+        1,
+      ]
+    }
+    fillOpacity={1}
+    fillRule={0}
+    matrix={
+      Array [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+      ]
+    }
+    opacity={1}
+    originX={0}
+    originY={0}
+    propList={
+      Array [
+        "stroke",
+        "strokeWidth",
+        "fill",
+        "fillRule",
+      ]
+    }
+    rotation={0}
+    scaleX={1}
+    scaleY={1}
+    skewX={0}
+    skewY={0}
+    stroke={null}
+    strokeDasharray={null}
+    strokeDashoffset={null}
+    strokeLinecap={0}
+    strokeLinejoin={0}
+    strokeMiterlimit={4}
+    strokeOpacity={1}
+    strokeWidth="1"
+    x={0}
+    y={0}
+  />
+</RNSVGSvgView>
+`;
