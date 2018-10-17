@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
-import { Modal, View, Alert, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
-import { FormLabel, FormInput, Text } from 'react-native-elements'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import NameSelect from '../modals/NameSelect/NameSelect';
 
 class Home extends Component {
-
   state = {
     modalVisible: false,
-    players: ['', '', '', '',]
   }
 
   setModalVisible(visible) {
@@ -33,16 +31,6 @@ class Home extends Component {
     this.props.navigation.navigate('RulesScreen', { title: 'Oyun Kurallari' })
   }
 
-  updatePlayerName(index, name) {
-    const players = { ...this.state.players }
-    players[index] = name
-
-    this.setState({
-      ...this.state,
-      players
-    })
-  }
-
   modalClose = () => {
     this.setModalVisible(!this.state.modalVisible);
     this.props.navigation.navigate('GameScreen', { title: 'Yeni Oyun' })
@@ -51,47 +39,7 @@ class Home extends Component {
   render() {
     return (
       <View>
-        <Modal
-          animationType="fade"
-          transparent={false}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-          }}>
-          <View style={{ marginTop: 100 }}>
-            <View>
-              <Text h4 style={{
-                textAlign: 'center',
-                color: 'grey'
-              }}>Oyuncu isimlerini giriniz</Text>
-
-              <FormLabel>Oyuncu 1:</FormLabel>
-              <FormInput
-                onChangeText={(text) => this.props.onPlayerNameChanged(0, text)}
-                value={this.props.players[0]} />
-
-              <FormLabel>Oyuncu 2:</FormLabel>
-              <FormInput
-                onChangeText={(text) => this.props.onPlayerNameChanged(1, text)}
-                value={this.props.players[1]} />
-
-              <FormLabel>Oyuncu 3:</FormLabel>
-              <FormInput
-                onChangeText={(text) => this.props.onPlayerNameChanged(2, text)}
-                value={this.props.players[2]} />
-
-              <FormLabel>Oyuncu 4:</FormLabel>
-              <FormInput
-                onChangeText={(text) => this.props.onPlayerNameChanged(3, text)}
-                value={this.props.players[3]} />
-
-              <Button
-                onPress={() => (this.modalClose())}
-                title='Kaydet' />
-
-            </View>
-          </View>
-        </Modal>
+        <NameSelect visible={this.state.modalVisible}/>
 
         <Button
           onPress={() => {

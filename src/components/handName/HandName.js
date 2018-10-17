@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, StyleSheet } from 'react-native'
 
-const HandName = (props) => {
+const handName = (props) => {
     return (
         <Text style={styles.container}>
             {props.name}
@@ -10,11 +10,11 @@ const HandName = (props) => {
     );
 }
 
-HandName.propTypes = {
+handName.propTypes = {
     name: PropTypes.string,
 }
 
-export default HandName;
+export default handName;
 
 var styles = StyleSheet.create({
     container: {

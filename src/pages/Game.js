@@ -7,6 +7,11 @@ import { connect } from 'react-redux';
 
 class Game extends Component {
 
+    state = {
+        handSelectModalVisible: false,
+        valueSelectModalVisible: false,
+    }
+
     static navigationOptions = ({ navigation }) => ({
         // title: `${navigation.state.params.title}`,
         headerTitle: 'Yeni Oyun',

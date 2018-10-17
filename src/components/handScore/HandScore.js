@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native'
+import { Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const handScore = (props) => {
     return (
@@ -8,6 +9,10 @@ const handScore = (props) => {
         </Text>
     );
 };
+
+handScore.propTypes = {
+    score: PropTypes.number,
+}
 
 export default handScore;
 
