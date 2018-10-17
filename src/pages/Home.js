@@ -32,14 +32,18 @@ class Home extends Component {
   }
 
   modalClose = () => {
-    this.setModalVisible(!this.state.modalVisible);
+    console.log('Modal Close pressed')
+    console.log(this.state)
+    this.setModalVisible(false);
     this.props.navigation.navigate('GameScreen', { title: 'Yeni Oyun' })
   }
 
   render() {
     return (
       <View>
-        <NameSelect visible={this.state.modalVisible}/>
+        <NameSelect
+          modalClose={this.modalClose}
+          visible={this.state.modalVisible} />
 
         <Button
           onPress={() => {
@@ -65,27 +69,15 @@ const styles = StyleSheet.create({
   }
 })
 
-const modalStyles = StyleSheet.create({
-  title: {
-
-  }
-})
-
 const mapStateToProps = state => {
   return {
-    players: state.players
+
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onPlayerNameChanged: (index, name) => dispatch({
-      type: 'PLAYER_NAME_UPDATE',
-      payload: {
-        index,
-        name,
-      }
-    })
+
   }
 }
 

@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet, Modal } from 'react-native';
+import { View, StyleSheet, Modal } from 'react-native';
 import PropTypes from 'prop-types';
-import { FormLabel, FormInput, Text } from 'react-native-elements';
+import { FormLabel, FormInput, Text, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 class NameSelect extends Component {
-    state = {
-        visible: this.props.visible,
-    }
-
     static propTypes = {
-        visible: PropTypes.boolean,
+        visible: PropTypes.bool,
     }
 
     render() {
@@ -18,7 +14,7 @@ class NameSelect extends Component {
             <Modal
                 animationType="fade"
                 transparent={false}
-                visible={this.state.visible}
+                visible={this.props.visible}
                 onRequestClose={() => {
                     Alert.alert('Modal has been closed.');
                 }}>
@@ -50,7 +46,7 @@ class NameSelect extends Component {
                             value={this.props.players[3]} />
 
                         <Button
-                            onPress={() => (this.modalClose())}
+                            onPress={this.props.modalClose}
                             title='Kaydet' />
 
                     </View>
