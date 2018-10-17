@@ -3,6 +3,7 @@ import { View, Button, StyleSheet } from 'react-native';
 import Name from '../components/name/Name';
 import HandNane from '../components/handName/HandName';
 import HandScore from '../components/handScore/HandScore';
+import { connect } from 'react-redux';
 
 class Game extends Component {
 
@@ -46,10 +47,22 @@ class Game extends Component {
                     flexDirection: 'row',
                 }}>
                     <View style={{ width: '20%' }} />
-                    <Name />
-                    <Name />
-                    <Name />
-                    <Name />
+                    <Name 
+                        name={this.props.players[0]}
+                        reward={0}
+                        punish={0}/>
+                    <Name 
+                        name={this.props.players[1]}
+                        reward={0}
+                        punish={0}/>
+                    <Name 
+                        name={this.props.players[2]}
+                        reward={0}
+                        punish={0}/>
+                    <Name 
+                        name={this.props.players[3]}
+                        reward={0}
+                        punish={0}/>
                 </View>
 
                 {rows}
@@ -58,10 +71,16 @@ class Game extends Component {
     }
 }
 
-export default Game
-
 var styles = StyleSheet.create({
     addButtonTitle: {
         fontSize: 16,
     }
 })
+
+const mapStateToProps = state => {
+    return {
+      players: state.players
+    }
+  }
+
+export default connect(mapStateToProps)(Game)
