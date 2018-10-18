@@ -4,12 +4,16 @@ import Name from '../components/name/Name';
 import HandNane from '../components/handName/HandName';
 import HandScore from '../components/handScore/HandScore';
 import { connect } from 'react-redux';
+import HandValues from '../modals/HandValues/HandValues';
 
 class Game extends Component {
-
     state = {
-        handSelectModalVisible: false,
-        valueSelectModalVisible: false,
+        handValuesModalVisible: false,
+    }
+
+    constructor(props) {
+        super(props);
+        // this.handValuesModalOpen = this.handValuesModalOpen.bind(this);
     }
 
     static navigationOptions = ({ navigation }) => ({
@@ -23,51 +27,72 @@ class Game extends Component {
             <Button
                 style={styles.addButtonTitle}
                 title='+'
-                onPress={() => console.log('pressed')}
+                onPress={navigation.getParam('openHandValues')}
             />
         ),
     });
+
+    componentDidMount() {
+        this.props.navigation.setParams({ openHandValues: this.handValuesModalOpen });
+    }
+
+    handValuesModalOpen = () => {
+        this.setState({
+            handValuesModalVisible: true,
+        })
+    }
+
+    handValuesModalClose = () => {
+        this.setState({
+            handValuesModalVisible: false,
+        })
+    }
 
     render() {
         let rows = []
 
         for (let i = 0; i < 20; i++) {
             rows.push(
-            <View
-                key={i}
-                style={{
-                flexDirection: 'row',
-            }}>
-                <HandNane />
-                <HandScore />
-                <HandScore />
-                <HandScore />
-                <HandScore />
-            </View>)
+                <View
+                    key={i}
+                    style={{
+                        flexDirection: 'row',
+                    }}>
+                    <HandNane />
+                    <HandScore />
+                    <HandScore />
+                    <HandScore />
+                    <HandScore />
+                </View>)
         }
 
         return (
             <View>
+                <HandValues
+                    visible={this.state.handValuesModalVisible}
+                    modalClose={this.handValuesModalClose}
+                />
+
                 <View style={{
                     flexDirection: 'row',
                 }}>
                     <View style={{ width: '20%' }} />
-                    <Name 
+                    <Name
                         name={this.props.players[0]}
                         reward={0}
-                        punish={0}/>
-                    <Name 
+                        punish={0} />
+                    <Name
                         name={this.props.players[1]}
                         reward={0}
-                        punish={0}/>
-                    <Name 
+                        punish={0} />
+                    <Name
                         name={this.props.players[2]}
                         reward={0}
-                        punish={0}/>
-                    <Name 
+                        punish={0} />
+                    <Name
                         name={this.props.players[3]}
                         reward={0}
-                        punish={0}/>
+                        punish={0} />
                 </View>
 
                 {rows}
@@ -84,8 +109,8 @@ var styles = StyleSheet.create({
 
 const mapStateToProps = state => {
     return {
-      players: state.players
+        players: state.players
     }
-  }
+}
 
 export default connect(mapStateToProps)(Game)

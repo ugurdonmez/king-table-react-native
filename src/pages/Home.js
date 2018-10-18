@@ -32,8 +32,6 @@ class Home extends Component {
   }
 
   modalClose = () => {
-    console.log('Modal Close pressed')
-    console.log(this.state)
     this.setModalVisible(false);
     this.props.navigation.navigate('GameScreen', { title: 'Yeni Oyun' })
   }
