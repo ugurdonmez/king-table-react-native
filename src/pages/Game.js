@@ -69,8 +69,8 @@ class Game extends Component {
         return (
             <View>
                 <HandValues
-                    visible={this.state.handValuesModalVisible}
                     modalClose={this.handValuesModalClose}
+                    visible={this.state.handValuesModalVisible}
                 />
 
                 <View style={{
