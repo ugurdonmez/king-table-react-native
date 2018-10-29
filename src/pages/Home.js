@@ -41,8 +41,9 @@ class Home extends Component {
       <View>
         <NameSelect
           modalClose={this.modalClose}
-          visible={this.state.modalVisible} />
-
+          visible={this.state.modalVisible} 
+        />
+        
         <Button
           onPress={() => {
             this.setModalVisible(true);
