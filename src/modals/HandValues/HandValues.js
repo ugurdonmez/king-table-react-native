@@ -66,15 +66,29 @@ class HandValues extends Component {
         });
     }
 
-    increaseHandler = () => {
-        console.log('increase handler pressed');
+    increaseHandler = (id) => {
+        console.log('increase handler pressed' + id);
     }
 
-    decreaseHandler = () => {
-        console.log('decrease handler pressed');
+    decreaseHandler = (id) => {
+        console.log('decrease handler pressed' + id);
     }
 
     render() {
+
+        let handValues = this.props.players.map((p, index) =>
+            <HandValue
+                key={index}
+                name={p}
+                canDecrease={this.state.canDecrease[index]}
+                canIncrease={this.state.canIncrease[index]}
+                value={this.state.playerScore[index]}
+                decreaseHandler={() => this.decreaseHandler(index)}
+                increaseHandler={() => this.increaseHandler(index)}
+            />
+
+        )
+
         return (
             <Modal
                 animationType="fade"
@@ -96,42 +110,7 @@ class HandValues extends Component {
 
                     <Text>Secilen Oyun: El Almaz</Text>
 
-                    <HandValue 
-                        name={this.props.players[0]}
-                        canDecrease={this.state.canDecrease[0]}
-                        canIncrease={this.state.canIncrease[0]}
-                        value={this.state.playerScore[0]}
-                        decreaseHandler={this.decreaseHandler}
-                        increaseHandler={this.increaseHandler}
-                    />
-
-                    <HandValue 
-                        name={this.props.players[1]}
-                        canDecrease={this.state.canDecrease[1]}
-                        canIncrease={this.state.canIncrease[1]}
-                        value={this.state.playerScore[1]}
-                        decreaseHandler={this.decreaseHandler}
-                        increaseHandler={this.increaseHandler}
-                    />
-
-                    <HandValue 
-                        name={this.props.players[2]}
-                        canDecrease={this.state.canDecrease[2]}
-                        canIncrease={this.state.canIncrease[2]}
-                        value={this.state.playerScore[2]}
-                        decreaseHandler={this.decreaseHandler}
-                        increaseHandler={this.increaseHandler}
-                    />
-
-                    <HandValue 
-                        name={this.props.players[3]}
-                        canDecrease={this.state.canDecrease[3]}
-                        canIncrease={this.state.canIncrease[3]}
-                        value={this.state.playerScore[3]}
-                        decreaseHandler={this.decreaseHandler}
-                        increaseHandler={this.increaseHandler}
-                    />
-
+                    {handValues}
                 </View>
 
                 <Button

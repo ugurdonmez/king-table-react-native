@@ -5,12 +5,14 @@ import PropTypes from 'prop-types';
 class HandValue extends Component {
 
     static propTypes = {
+        id: PropTypes.number,
         name: PropTypes.string,
         canDecrease: PropTypes.bool,
         canIncrease: PropTypes.bool,
         value: PropTypes.number,
         decreaseHandler: PropTypes.func,
         increaseHandler: PropTypes.func,
+
     }
 
     render() {
