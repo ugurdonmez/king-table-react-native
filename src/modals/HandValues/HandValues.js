@@ -15,18 +15,64 @@ class HandValues extends Component {
     }
 
     state = {
-        isChecked: false,
+        handRow: 1,
+        handName: 'Koz',
+        handId: 1,
+        playerScore: [
+            0,
+            0,
+            0,
+            0,
+        ],
+        canIncrease: [
+            true,
+            true,
+            true,
+            true,
+        ],
+        canDecrease: [
+            false,
+            false,
+            false,
+            false,
+        ]
+    }
+
+    handValueNameMap = {
+        0: 'Koz',
+        1: 'El Almaz',
+        2: 'Erkek Almaz',
+        3: 'Kiz Almaz',
+        4: 'Kupa Almaz',
+        5: 'Rifki',
+        6: 'Son Iki',
     }
 
     radio_props = [
-        { label: 'Koz', value: 1 },
+        { label: 'Koz', value: 0 },
         { label: 'El Almaz', value: 1 },
-        { label: 'Erkek Almaz', value: 0 },
-        { label: 'Kiz Almaz', value: 0 },
-        { label: 'Kupa Almaz', value: 0 },
-        { label: 'Rifki', value: 0 },
-        { label: 'Son Iki', value: 0 },
+        { label: 'Erkek Almaz', value: 2 },
+        { label: 'Kiz Almaz', value: 3 },
+        { label: 'Kupa Almaz', value: 4 },
+        { label: 'Rifki', value: 5 },
+        { label: 'Son Iki', value: 6 },
     ];
+
+    radioButtonHandler = (id) => {
+        this.setState({
+            ...this.state,
+            handName: this.handValueNameMap[id],
+            handId: id,
+        });
+    }
+
+    increaseHandler = () => {
+        console.log('increase handler pressed');
+    }
+
+    decreaseHandler = () => {
+        console.log('decrease handler pressed');
+    }
 
     render() {
         return (
@@ -45,18 +91,46 @@ class HandValues extends Component {
                     <RadioForm
                         radio_props={this.radio_props}
                         initial={0}
-                        onPress={(value) => { this.setState({ value: value }) }}
+                        onPress={(value) => { this.radioButtonHandler(value) }}
                     />
 
                     <Text>Secilen Oyun: El Almaz</Text>
 
                     <HandValue 
-                        name="ugur"
-                        canDecrease={false}
-                        canIncrease={true}
-                        />
+                        name={this.props.players[0]}
+                        canDecrease={this.state.canDecrease[0]}
+                        canIncrease={this.state.canIncrease[0]}
+                        value={this.state.playerScore[0]}
+                        decreaseHandler={this.decreaseHandler}
+                        increaseHandler={this.increaseHandler}
+                    />
 
+                    <HandValue 
+                        name={this.props.players[1]}
+                        canDecrease={this.state.canDecrease[1]}
+                        canIncrease={this.state.canIncrease[1]}
+                        value={this.state.playerScore[1]}
+                        decreaseHandler={this.decreaseHandler}
+                        increaseHandler={this.increaseHandler}
+                    />
 
+                    <HandValue 
+                        name={this.props.players[2]}
+                        canDecrease={this.state.canDecrease[2]}
+                        canIncrease={this.state.canIncrease[2]}
+                        value={this.state.playerScore[2]}
+                        decreaseHandler={this.decreaseHandler}
+                        increaseHandler={this.increaseHandler}
+                    />
+
+                    <HandValue 
+                        name={this.props.players[3]}
+                        canDecrease={this.state.canDecrease[3]}
+                        canIncrease={this.state.canIncrease[3]}
+                        value={this.state.playerScore[3]}
+                        decreaseHandler={this.decreaseHandler}
+                        increaseHandler={this.increaseHandler}
+                    />
 
                 </View>
 
@@ -70,7 +144,7 @@ class HandValues extends Component {
 
 const mapStateToProps = state => {
     return {
-
+        players: state.players
     }
 }
 

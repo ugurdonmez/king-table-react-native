@@ -6,32 +6,11 @@ class HandValue extends Component {
 
     static propTypes = {
         name: PropTypes.string,
-        canIncrease: PropTypes.bool,
         canDecrease: PropTypes.bool,
-    }
-
-    state = {
-        value : 0,
-    }
-
-    valueIncreaseHandle = () => {
-        let val = this.state.value;
-        val = val + 1;
-
-        this.setState({
-            ...this.state,
-            value: val,
-        })
-    }
-
-    valueDecreaseHandle = () => {
-        let val = this.state.value;
-        val = val - 1;
-
-        this.setState({
-            ...this.state,
-            value: val,
-        })
+        canIncrease: PropTypes.bool,
+        value: PropTypes.number,
+        decreaseHandler: PropTypes.func,
+        increaseHandler: PropTypes.func,
     }
 
     render() {
@@ -47,7 +26,7 @@ class HandValue extends Component {
                 <Text style={styles.text}>{this.props.name}: </Text>
                 
                 <Button 
-                    onPress={this.valueDecreaseHandle}
+                    onPress={this.props.decreaseHandler}
                     color={colorMinus}
                     style={styles.buttonMinus} 
                     title="-"></Button>
@@ -55,10 +34,10 @@ class HandValue extends Component {
                 <Button 
                     disabled
                     style={styles.buttonValue} 
-                    title={String(this.state.value)}></Button>
+                    title={String(this.props.value)}></Button>
                 
                 <Button 
-                    onPress={this.valueIncreaseHandle}
+                    onPress={this.props.increaseHandler}
                     color={colorPlus}
                     style={styles.buttonPlus} 
                     title="+"></Button>

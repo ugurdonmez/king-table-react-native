@@ -1,5 +1,5 @@
 const initialState = {
-    players: ['Ugur', '', '','']
+    players: ['Ugur', 'Ahmet', 'Ali','Ayse']
 }
 
 const reducer = (state = initialState, action) => {
