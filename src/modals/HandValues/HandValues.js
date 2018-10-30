@@ -38,25 +38,43 @@ class HandValues extends Component {
         ]
     }
 
-    handValueNameMap = {
-        0: 'Koz',
-        1: 'El Almaz',
-        2: 'Erkek Almaz',
-        3: 'Kiz Almaz',
-        4: 'Kupa Almaz',
-        5: 'Rifki',
-        6: 'Son Iki',
-    }
-
-    radio_props = [
-        { label: 'Koz', value: 0 },
-        { label: 'El Almaz', value: 1 },
-        { label: 'Erkek Almaz', value: 2 },
-        { label: 'Kiz Almaz', value: 3 },
-        { label: 'Kupa Almaz', value: 4 },
-        { label: 'Rifki', value: 5 },
-        { label: 'Son Iki', value: 6 },
-    ];
+    handValueNameMap = [
+        {
+            name: 'Koz',
+            total: 13,
+            value: 50,
+        },
+        {
+            name: 'El Almaz',
+            total: 13,
+            value: -50,
+        },
+        {
+            name: 'Erkek Almaz',
+            total: 8,
+            value: -60,
+        },
+        {
+            name: 'Kiz Almaz',
+            total: 4,
+            value: -100,
+        },
+        {
+            name: 'Kupa Almaz',
+            total: 13,
+            value: -30,
+        },
+        {
+            name: 'Rifki',
+            total: 1,
+            value: -320,
+        },
+       {
+            name: 'Son Iki',
+            total: 2,
+            value: -180,
+        },
+    ]
 
     radioButtonHandler = (id) => {
         this.setState({
@@ -76,6 +94,13 @@ class HandValues extends Component {
 
     render() {
 
+        let radio_props = this.handValueNameMap.map( (p, index) => {
+            return {
+                label: p.name,
+                value: index,
+            }
+        })
+
         let handValues = this.props.players.map((p, index) =>
             <HandValue
                 key={index}
@@ -86,7 +111,6 @@ class HandValues extends Component {
                 decreaseHandler={() => this.decreaseHandler(index)}
                 increaseHandler={() => this.increaseHandler(index)}
             />
-
         )
 
         return (
@@ -103,7 +127,7 @@ class HandValues extends Component {
                     <Text>El Sirasi: Ugur</Text>
 
                     <RadioForm
-                        radio_props={this.radio_props}
+                        radio_props={radio_props}
                         initial={0}
                         onPress={(value) => { this.radioButtonHandler(value) }}
                     />
