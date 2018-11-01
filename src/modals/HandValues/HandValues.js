@@ -16,8 +16,7 @@ class HandValues extends Component {
 
     state = {
         handRow: 1,
-        handName: 'Koz',
-        handId: 1,
+        handId: 0,
         playerScore: [
             0,
             0,
@@ -69,7 +68,7 @@ class HandValues extends Component {
             total: 1,
             value: -320,
         },
-       {
+        {
             name: 'Son Iki',
             total: 2,
             value: -180,
@@ -79,22 +78,85 @@ class HandValues extends Component {
     radioButtonHandler = (id) => {
         this.setState({
             ...this.state,
-            handName: this.handValueNameMap[id],
             handId: id,
         });
     }
 
+    increaseDecreaseDisabledHandler = () => {
+        let max = this.handValueNameMap[this.state.handId].total;
+
+        let current = this.state.playerScore.reduce((a, b) => a + b, 0)
+
+        if (current >= max) {
+            this.setState({
+                ...this.state,
+                canIncrease: [
+                    false,
+                    false,
+                    false,
+                    false,
+                ]
+            });
+
+            return;
+        }
+
+        if (current === 0) {
+            this.setState({
+                ...this.state,
+                canDecrease: [
+                    false,
+                    false,
+                    false,
+                    false,
+                ]
+            });
+
+            return;
+        }
+
+        let playerScore = this.state.playerScore;
+
+        let canDecrease = playerScore.map(p => p > 0 ? true : false)
+
+        let canIncrease = playerScore.map(p => p === max ? false : true)
+        
+        this.setState({
+            ...this.state,
+            canDecrease,
+            canIncrease,
+        })
+    }
+
     increaseHandler = (id) => {
-        console.log('increase handler pressed' + id);
+        let playerScore = this.state.playerScore;
+
+        playerScore[id]++;
+
+        this.setState({
+            ...this.state,
+            playerScore
+        })
+
+        this.increaseDecreaseDisabledHandler();
     }
 
     decreaseHandler = (id) => {
-        console.log('decrease handler pressed' + id);
+        let playerScore = this.state.playerScore;
+
+        playerScore[id]--;
+
+        this.setState({
+            ...this.state,
+            playerScore,
+        })
+
+        this.increaseDecreaseDisabledHandler();
     }
 
     render() {
 
-        let radio_props = this.handValueNameMap.map( (p, index) => {
+        let radio_props = this.handValueNameMap.map((p, index) => {
             return {
                 label: p.name,
                 value: index,
