@@ -1,5 +1,6 @@
 const initialState = {
-    players: ['Ugur', 'Ahmet', 'Ali','Ayse']
+    players: ['Ugur', 'Ahmet', 'Ali', 'Ayse'],
+    hands: [],
 }
 
 const reducer = (state = initialState, action) => {
@@ -10,7 +11,18 @@ const reducer = (state = initialState, action) => {
 
         return {
             ...state,
-            players
+            players,
+        }
+    }
+
+    if (action.type === 'ENTER_HAND_VALUE') {
+        const hands = state.hands
+
+        hands.push(action.payload.hand)
+
+        return {
+            ...state,
+            hands,
         }
     }
 

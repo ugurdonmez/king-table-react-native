@@ -154,6 +154,20 @@ class HandValues extends Component {
         this.increaseDecreaseDisabledHandler();
     }
 
+    saveHandValueHandler = () => {
+        // save to state
+
+        let hand = {
+            row: this.state.handRow,
+            id: this.state.handId,
+            scores: this.state.playerScore,
+        }
+
+        this.props.saveHandValue(hand)
+
+        this.props.modalClose();
+    }
+
     render() {
 
         let radio_props = this.handValueNameMap.map((p, index) => {
@@ -200,7 +214,7 @@ class HandValues extends Component {
                 </View>
 
                 <Button
-                    onPress={this.props.modalClose}
+                    onPress={this.saveHandValueHandler}
                     title='Kaydet' />
             </Modal>
         )
@@ -215,7 +229,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        saveHandValue: (hand) => dispatch({
+            type: 'ENTER_HAND_VALUE',
+            payload: {
+                hand,
+            }
+        })
     }
 }
 
