@@ -14,7 +14,6 @@ class HandValue extends Component {
     }
 
     render() {
-
         let colorBlue = "#3463c1";
         let colorBrown = "#aa6c36";
 
@@ -26,7 +25,7 @@ class HandValue extends Component {
                 <Text style={styles.text}>{this.props.name}: </Text>
 
                 <Button
-                    disabled={this.props.canDecrease}
+                    disabled={!this.props.canDecrease}
                     onPress={this.props.decreaseHandler}
                     color={colorMinus}
                     style={styles.buttonMinus}
@@ -38,7 +37,7 @@ class HandValue extends Component {
                     title={String(this.props.value)}></Button>
 
                 <Button
-                    disabled={this.props.canIncrease}
+                    disabled={!this.props.canIncrease}
                     onPress={this.props.increaseHandler}
                     color={colorPlus}
                     style={styles.buttonPlus}
