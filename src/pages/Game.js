@@ -52,18 +52,36 @@ class Game extends Component {
         let rows = []
 
         for (let i = 0; i < 20; i++) {
-            rows.push(
-                <View
-                    key={i}
-                    style={{
-                        flexDirection: 'row',
-                    }}>
-                    <HandNane />
-                    <HandScore />
-                    <HandScore />
-                    <HandScore />
-                    <HandScore />
-                </View>)
+
+            if (this.props.hands[i]) {
+                rows.push(
+                    <View
+                        key={i}
+                        style={{
+                            flexDirection: 'row',
+                        }}>
+                        <HandNane name={this.props.hands[i].id.toString()}/>
+                        <HandScore score={this.props.hands[i].scores[0]}/>
+                        <HandScore score={this.props.hands[i].scores[1]}/>
+                        <HandScore score={this.props.hands[i].scores[2]}/>
+                        <HandScore score={this.props.hands[i].scores[3]}/>
+                    </View>)
+            } else {
+                rows.push(
+                    <View
+                        key={i}
+                        style={{
+                            flexDirection: 'row',
+                        }}>
+                        <HandNane />
+                        <HandScore />
+                        <HandScore />
+                        <HandScore />
+                        <HandScore />
+                    </View>)
+            }
+
+            
         }
 
         return (
@@ -109,7 +127,8 @@ var styles = StyleSheet.create({
 
 const mapStateToProps = state => {
     return {
-        players: state.players
+        players: state.players,
+        hands: state.hands,
     }
 }
 
