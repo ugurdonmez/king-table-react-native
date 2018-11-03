@@ -5,6 +5,8 @@ import HandNane from '../components/handName/HandName';
 import HandScore from '../components/handScore/HandScore';
 import { connect } from 'react-redux';
 import HandValues from '../modals/HandValues/HandValues';
+import handValueMap from './../constants/handValueMap';
+
 
 class Game extends Component {
     state = {
@@ -13,7 +15,6 @@ class Game extends Component {
 
     constructor(props) {
         super(props);
-        // this.handValuesModalOpen = this.handValuesModalOpen.bind(this);
     }
 
     static navigationOptions = ({ navigation }) => ({
@@ -60,11 +61,11 @@ class Game extends Component {
                         style={{
                             flexDirection: 'row',
                         }}>
-                        <HandNane name={this.props.hands[i].id.toString()}/>
-                        <HandScore score={this.props.hands[i].scores[0]}/>
-                        <HandScore score={this.props.hands[i].scores[1]}/>
-                        <HandScore score={this.props.hands[i].scores[2]}/>
-                        <HandScore score={this.props.hands[i].scores[3]}/>
+                        <HandNane name={handValueMap[this.props.hands[i].id].name}/>
+                        <HandScore score={this.props.hands[i].scores[0] * handValueMap[this.props.hands[i].id].value}/>
+                        <HandScore score={this.props.hands[i].scores[1] * handValueMap[this.props.hands[i].id].value}/>
+                        <HandScore score={this.props.hands[i].scores[2] * handValueMap[this.props.hands[i].id].value}/>
+                        <HandScore score={this.props.hands[i].scores[3] * handValueMap[this.props.hands[i].id].value}/>
                     </View>)
             } else {
                 rows.push(
