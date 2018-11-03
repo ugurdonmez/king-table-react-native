@@ -3,9 +3,9 @@ import { View, StyleSheet, Modal } from 'react-native';
 import PropTypes from 'prop-types';
 import { Text, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
-import CheckBox from 'react-native-check-box'
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 import HandValue from './HandValue/HandValue';
+import handValueMap from './../../constants/handValueMap'
 
 class HandValues extends Component {
 
@@ -37,43 +37,43 @@ class HandValues extends Component {
         ]
     }
 
-    handValueNameMap = [
-        {
-            name: 'Koz',
-            total: 13,
-            value: 50,
-        },
-        {
-            name: 'El Almaz',
-            total: 13,
-            value: -50,
-        },
-        {
-            name: 'Erkek Almaz',
-            total: 8,
-            value: -60,
-        },
-        {
-            name: 'Kiz Almaz',
-            total: 4,
-            value: -100,
-        },
-        {
-            name: 'Kupa Almaz',
-            total: 13,
-            value: -30,
-        },
-        {
-            name: 'Rifki',
-            total: 1,
-            value: -320,
-        },
-        {
-            name: 'Son Iki',
-            total: 2,
-            value: -180,
-        },
-    ]
+    // handValueNameMap = [
+    //     {
+    //         name: 'Koz',
+    //         total: 13,
+    //         value: 50,
+    //     },
+    //     {
+    //         name: 'El Almaz',
+    //         total: 13,
+    //         value: -50,
+    //     },
+    //     {
+    //         name: 'Erkek Almaz',
+    //         total: 8,
+    //         value: -60,
+    //     },
+    //     {
+    //         name: 'Kiz Almaz',
+    //         total: 4,
+    //         value: -100,
+    //     },
+    //     {
+    //         name: 'Kupa Almaz',
+    //         total: 13,
+    //         value: -30,
+    //     },
+    //     {
+    //         name: 'Rifki',
+    //         total: 1,
+    //         value: -320,
+    //     },
+    //     {
+    //         name: 'Son Iki',
+    //         total: 2,
+    //         value: -180,
+    //     },
+    // ]
 
     radioButtonHandler = (id) => {
         this.setState({
@@ -83,7 +83,7 @@ class HandValues extends Component {
     }
 
     increaseDecreaseDisabledHandler = () => {
-        let max = this.handValueNameMap[this.state.handId].total;
+        let max = handValueMap[this.state.handId].total;
 
         let current = this.state.playerScore.reduce((a, b) => a + b, 0)
 
@@ -170,7 +170,7 @@ class HandValues extends Component {
 
     render() {
 
-        let radio_props = this.handValueNameMap.map((p, index) => {
+        let radio_props = handValueMap.map((p, index) => {
             return {
                 label: p.name,
                 value: index,
