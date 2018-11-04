@@ -9,31 +9,38 @@ import handValueMap from './../../constants/handValueMap'
 
 class HandValues extends Component {
 
+    initialState = {
+        handId: 0,
+        playerScore: [
+            0,
+            0,
+            0,
+            0,
+        ],
+        canIncrease: [
+            true,
+            true,
+            true,
+            true,
+        ],
+        canDecrease: [
+            false,
+            false,
+            false,
+            false,
+        ]
+    }
+
     constructor(props) {
         super(props);
     
-        this.state = {
-            handId: 0,
-            playerScore: [
-                0,
-                0,
-                0,
-                0,
-            ],
-            canIncrease: [
-                true,
-                true,
-                true,
-                true,
-            ],
-            canDecrease: [
-                false,
-                false,
-                false,
-                false,
-            ]
-        }
+        this.state = this.initialState;
     }
+
+    componentWillMount = () => {
+      console.log('aaaaaaaaaaaaaa')
+    }
+    
 
     static propTypes = {
         visible: PropTypes.bool,
@@ -44,7 +51,9 @@ class HandValues extends Component {
         this.setState({
             ...this.state,
             handId: id,
-            playerScore: [0,0,0,0]
+            playerScore: [0,0,0,0],
+            canIncrease: [true,true,true,true],
+            canDecrease: [false,false,false,false],
         });
     }
 
@@ -127,8 +136,8 @@ class HandValues extends Component {
         }
 
         this.props.saveHandValue(hand)
-
         this.props.modalClose();
+        this.setState(this.initialState);
     }
 
     render() {
