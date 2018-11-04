@@ -9,38 +9,42 @@ import handValueMap from './../../constants/handValueMap'
 
 class HandValues extends Component {
 
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            handId: 0,
+            playerScore: [
+                0,
+                0,
+                0,
+                0,
+            ],
+            canIncrease: [
+                true,
+                true,
+                true,
+                true,
+            ],
+            canDecrease: [
+                false,
+                false,
+                false,
+                false,
+            ]
+        }
+    }
+
     static propTypes = {
         visible: PropTypes.bool,
         modalClose: PropTypes.func,
-    }
-
-    state = {
-        handRow: 1,
-        handId: 0,
-        playerScore: [
-            0,
-            0,
-            0,
-            0,
-        ],
-        canIncrease: [
-            true,
-            true,
-            true,
-            true,
-        ],
-        canDecrease: [
-            false,
-            false,
-            false,
-            false,
-        ]
     }
 
     radioButtonHandler = (id) => {
         this.setState({
             ...this.state,
             handId: id,
+            playerScore: [0,0,0,0]
         });
     }
 
@@ -117,10 +121,7 @@ class HandValues extends Component {
     }
 
     saveHandValueHandler = () => {
-        // save to state
-
         let hand = {
-            row: this.state.handRow,
             id: this.state.handId,
             scores: this.state.playerScore,
         }
@@ -161,16 +162,16 @@ class HandValues extends Component {
                 }}>
 
                 <View style={{ marginTop: 100 }}>
-                    <Text>1. El Oynaniyor</Text>
-                    <Text>El Sirasi: Ugur</Text>
+                    <Text>{this.props.hands.length + 1}. El Oynaniyor</Text>
+                    <Text>El Sirasi: {this.props.players[this.props.hands.length % 4]}</Text>
 
                     <RadioForm
                         radio_props={radio_props}
-                        initial={0}
+                        initial={this.state.handId}
                         onPress={(value) => { this.radioButtonHandler(value) }}
                     />
 
-                    <Text>Secilen Oyun: El Almaz</Text>
+                    <Text>Secilen Oyun: {handValueMap[this.state.handId].name}</Text>
 
                     {handValues}
                 </View>
@@ -185,7 +186,8 @@ class HandValues extends Component {
 
 const mapStateToProps = state => {
     return {
-        players: state.players
+        players: state.players,
+        hands: state.hands,
     }
 }
 

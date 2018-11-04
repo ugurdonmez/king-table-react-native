@@ -53,7 +53,6 @@ class Game extends Component {
         let rows = []
 
         for (let i = 0; i < 20; i++) {
-
             if (this.props.hands[i]) {
                 rows.push(
                     <View
@@ -81,8 +80,6 @@ class Game extends Component {
                         <HandScore />
                     </View>)
             }
-
-            
         }
 
         return (
