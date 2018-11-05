@@ -134,8 +134,14 @@ class HandValues extends Component {
             id: this.state.handId,
             scores: this.state.playerScore,
         }
+        
+        let playerIndex = this.props.hands.length % 4;
+        let handType = this.state.handId === 0 ? 0 : 1; 
+        this.props.enterPlayerHand(playerIndex, handType);
 
-        this.props.saveHandValue(hand)
+        this.props.increasePlayedHand(this.state.handId);
+
+        this.props.saveHandValue(hand);
         this.props.modalClose();
         this.setState(this.initialState);
     }
@@ -206,7 +212,20 @@ const mapDispatchToProps = dispatch => {
             type: 'ENTER_HAND_VALUE',
             payload: {
                 hand,
-            }
+            },
+        }),
+        enterPlayerHand: (index, handType) => dispatch({
+            type: 'ENTER_PLAYER_HAND',
+            payload: {
+                index,
+                handType,
+            },
+        }),
+        increasePlayedHand: (index) => dispatch({
+            type: 'INCREASE_PLAYED_HAND',
+            payload: {
+                index,
+            },
         })
     }
 }

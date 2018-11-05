@@ -49,7 +49,7 @@ class NameSelect extends Component {
                             onPress={this.props.modalClose}
                             title='Kaydet' />
 
-                    </View>
+                    </View> 
                 </View>
             </Modal>
         );

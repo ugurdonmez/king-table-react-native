@@ -60,11 +60,11 @@ class Game extends Component {
                         style={{
                             flexDirection: 'row',
                         }}>
-                        <HandNane name={handValueMap[this.props.hands[i].id].name}/>
-                        <HandScore score={this.props.hands[i].scores[0] * handValueMap[this.props.hands[i].id].value}/>
-                        <HandScore score={this.props.hands[i].scores[1] * handValueMap[this.props.hands[i].id].value}/>
-                        <HandScore score={this.props.hands[i].scores[2] * handValueMap[this.props.hands[i].id].value}/>
-                        <HandScore score={this.props.hands[i].scores[3] * handValueMap[this.props.hands[i].id].value}/>
+                        <HandNane name={handValueMap[this.props.hands[i].id].name} />
+                        <HandScore score={this.props.hands[i].scores[0] * handValueMap[this.props.hands[i].id].value} />
+                        <HandScore score={this.props.hands[i].scores[1] * handValueMap[this.props.hands[i].id].value} />
+                        <HandScore score={this.props.hands[i].scores[2] * handValueMap[this.props.hands[i].id].value} />
+                        <HandScore score={this.props.hands[i].scores[3] * handValueMap[this.props.hands[i].id].value} />
                     </View>)
             } else {
                 rows.push(
@@ -82,6 +82,14 @@ class Game extends Component {
             }
         }
 
+        let names = this.props.players.map((p, index) =>
+            <Name
+                name={p}
+                reward={this.props.playersHands[index][0]}
+                punish={this.props.playersHands[index][1]} 
+            />
+        )
+
         return (
             <View>
                 <HandValues
@@ -93,22 +101,7 @@ class Game extends Component {
                     flexDirection: 'row',
                 }}>
                     <View style={{ width: '20%' }} />
-                    <Name
-                        name={this.props.players[0]}
-                        reward={0}
-                        punish={0} />
-                    <Name
-                        name={this.props.players[1]}
-                        reward={0}
-                        punish={0} />
-                    <Name
-                        name={this.props.players[2]}
-                        reward={0}
-                        punish={0} />
-                    <Name
-                        name={this.props.players[3]}
-                        reward={0}
-                        punish={0} />
+                    {names}
                 </View>
 
                 {rows}
@@ -127,6 +120,7 @@ const mapStateToProps = state => {
     return {
         players: state.players,
         hands: state.hands,
+        playersHands: state.playersHands,
     }
 }
 
