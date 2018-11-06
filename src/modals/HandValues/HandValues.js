@@ -134,26 +134,55 @@ class HandValues extends Component {
             id: this.state.handId,
             scores: this.state.playerScore,
         }
-        
+
         let playerIndex = this.props.hands.length % 4;
         let handType = this.state.handId === 0 ? 0 : 1; 
+        
         this.props.enterPlayerHand(playerIndex, handType);
-
         this.props.increasePlayedHand(this.state.handId);
-
         this.props.saveHandValue(hand);
+
         this.props.modalClose();
         this.setState(this.initialState);
     }
 
+    getAvailableHands = () => {
+        let playerIndex = this.props.hands.length % 4;
+        
+        let availableHands = []
+
+        if (this.props.playersHands[playerIndex][0] < 2) {
+            availableHands.push(handValueMap[0]);
+        }
+
+        if (this.props.playersHands[playerIndex][1] < 3) {
+            for (let i = 1; i < 7; i++) {
+                if (this.props.playedHands[i] < 2) {
+                    availableHands.push(handValueMap[i]);
+                }
+            }
+        }
+
+        return availableHands;
+    }
+
     render() {
 
-        let radio_props = handValueMap.map((p, index) => {
+        // let radio_props = handValueMap.map((p, index) => {
+        //     return {
+        //         label: p.name,
+        //         value: index,
+        //     }
+        // })
+
+        let radio_props = this.getAvailableHands().map((p, index) => {
             return {
                 label: p.name,
                 value: index,
             }
         })
+
+
 
         let handValues = this.props.players.map((p, index) =>
             <HandValue
@@ -203,6 +232,8 @@ const mapStateToProps = state => {
     return {
         players: state.players,
         hands: state.hands,
+        playedHands: state.playedHands,
+        playersHands: state.playersHands,
     }
 }
 
