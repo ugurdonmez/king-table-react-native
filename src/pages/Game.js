@@ -50,10 +50,15 @@ class Game extends Component {
     }
 
     render() {
-        let rows = []
+        let rows = [];
+
+        let total = [0, 0, 0, 0];
 
         for (let i = 0; i < 20; i++) {
             if (this.props.hands[i]) {
+                for (let j = 0; j < 4; j++) {
+                    total[j] += this.props.hands[i].scores[j] * handValueMap[this.props.hands[i].id].value;
+                }
                 rows.push(
                     <View
                         key={i}
@@ -82,11 +87,27 @@ class Game extends Component {
             }
         }
 
+        rows.push(
+            <View
+                key={21}
+                style={{
+                    flexDirection: 'row',
+                }}>
+                <HandNane name="Toplam"/>
+                <HandScore score={total[0]} />
+                <HandScore score={total[1]} />
+                <HandScore score={total[2]} />
+                <HandScore score={total[3]} />
+            </View>
+        )
+
+
+
         let names = this.props.players.map((p, index) =>
             <Name
                 name={p}
                 reward={this.props.playersHands[index][0]}
-                punish={this.props.playersHands[index][1]} 
+                punish={this.props.playersHands[index][1]}
             />
         )
 
