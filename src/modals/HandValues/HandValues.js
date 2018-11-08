@@ -167,14 +167,6 @@ class HandValues extends Component {
     }
 
     render() {
-
-        // let radio_props = handValueMap.map((p, index) => {
-        //     return {
-        //         label: p.name,
-        //         value: index,
-        //     }
-        // })
-
         let radio_props = this.getAvailableHands().map((p, index) => {
             return {
                 label: p.name,
