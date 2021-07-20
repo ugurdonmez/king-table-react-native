@@ -14,7 +14,7 @@
     "jest-cli": "^24.8.0",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
-    "react-native": "0.59.9",
+    "react-native": "0.62.3",
     "react-native-check-box": "^2.1.7",
     "react-native-elements": "^1.1.0",
     "react-native-simple-radio-button": "^2.7.3",
