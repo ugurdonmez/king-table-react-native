@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "expo": "^33.0.7",
+    "expo": "^46.0.14",
     "jest-cli": "^24.8.0",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
